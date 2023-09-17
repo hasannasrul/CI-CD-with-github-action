@@ -8,9 +8,11 @@ jobs:
   build-and-push-docker-image:
     name: build-and-push-docker-image-to-dockerhub
     runs-on: ubuntu-latest
+    environment:
+      name: prod
     env:
-     user: ${{secrets.DOCKERHUB_USERNAME_prod}}
-     pass: ${{secrets.DOCKERHUB_PASSWORD_prod}}
+     user: ${{secrets.DOCKERHUB_USERNAME}}
+     pass: ${{secrets.DOCKERHUB_PASSWORD}}
     steps:
       - uses: actions/checkout@v2
 
