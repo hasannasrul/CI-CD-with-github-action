@@ -49,9 +49,10 @@ jobs:
       - name: Copy deploy.sh to EC2 instance
         run: |
           mkdir -p ~/.ssh
+          echo "$sshKey" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
           eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
           scp -o StrictHostKeyChecking=no ./scripts/deploy.sh ubuntu@$serverIp:/home/ubuntu/deploy.sh
 
       - name: Execute deploy.sh on EC2 instance
