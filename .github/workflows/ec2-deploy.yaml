@@ -53,5 +53,5 @@ jobs:
           eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/id_rsa
           ssh -o StrictHostKeyChecking=no ubuntu@54.81.216.123 'bash -s' << EOF 
-          docker run $user/flask-simple-app:${{github.run_number}}
+          docker run -p 3000:3000 -d $user/flask-simple-app:${{github.run_number}}
           EOF
