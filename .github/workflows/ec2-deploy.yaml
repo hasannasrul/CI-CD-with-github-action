@@ -1,0 +1,35 @@
+name: image-build-and-push
+on:
+  # push:
+  #   branches: main
+  workflow_dispatch:
+    
+jobs:
+  build-and-push-docker-image:
+    name: build-and-push-docker-image-to-dockerhub
+    runs-on: ubuntu-latest
+    env:
+     user: ${{secrets.DOCKERHUB_USERNAME}}
+     pass: ${{secrets.DOCKERHUB_PASSWORD}}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: build docker
+        run: docker build -t flask-simple-app .
+
+      - name: docker tag
+        run: docker tag flask-simple-app $user/${{github.repository}}:${{github.run_number}}
+
+      - name: docker login
+        run: docker login -u $user -p $pass
+
+      - name: docker push
+        run: docker push $user/${{github.repository}}:${{github.run_number}}
+
+      - name: clean docker image
+        run: docker rmi $user/${{github.repository}}:${{github.run_number}} && docker rmi flask-simple-app
+
+      - name: successfull
+        run: echo " Job is successfull broooo... "
+
+
