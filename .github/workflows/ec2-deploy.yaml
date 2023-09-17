@@ -52,6 +52,6 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           eval "$(ssh-agent -s)"
           ssh-add ~/.ssh/id_rsa
-          ssh ubuntu@54.81.216.123 'bash -s' << EOF \
-          docker run $user/flask-simple-app:${{github.run_number}} \
+          ssh -o StrictHostKeyChecking=no ubuntu@54.81.216.123 'bash -s' << EOF 
+          docker run $user/flask-simple-app:${{github.run_number}}
           EOF
