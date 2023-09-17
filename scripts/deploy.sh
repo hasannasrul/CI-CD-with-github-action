@@ -8,11 +8,14 @@ if [ -n "$existing_container" ]; then
 fi
 
 # removing old images from server
-# docker images prune -a -f 
+docker images prune -a -f 
 
-# capturing run number from argument of worflow
+# capturing run number and user from argument of workflow
 run_number="$1"
-# echo "*** RUN NUMBER ******* \t" $run_number
+docker_user="$2"
+
+echo "============= RUN NUMBER ==========" $run_number
+echo "============= user ==========" $docker_user
 
 # deploying container
-docker run -p 3000:3000 -d -l flask-app $user/flask-simple-app:$run_number
+docker run -p 3000:3000 -d -l flask-app $docker_user/flask-simple-app:$run_number

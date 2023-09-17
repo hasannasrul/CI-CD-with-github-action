@@ -58,4 +58,4 @@ jobs:
 
       - name: Execute deploy.sh on EC2 instance
         run: |
-          ssh -o StrictHostKeyChecking=no ubuntu@$serverIp "bash /home/ubuntu/deploy.sh ${{github.run_number}}"
+          ssh -o StrictHostKeyChecking=no ubuntu@$serverIp "bash /home/ubuntu/deploy.sh ${{github.run_number}} $user"
