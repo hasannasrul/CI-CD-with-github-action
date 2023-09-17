@@ -18,7 +18,7 @@ jobs:
         run: docker build -t flask-simple-app .
 
       - name: docker tag
-        run: docker tag flask-simple-app $user/${{github.repository}}:${{github.run_number}}
+        run: docker tag flask-simple-app $user/flask-simple-app:${{github.run_number}}
 
       - name: docker login
         run: docker login -u $user -p $pass
