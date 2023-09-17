@@ -46,6 +46,7 @@ jobs:
       pass: ${{secrets.DOCKERHUB_PASSWORD}}
       serverIp: ${{ vars.EC2_SERVER_IP }}
     steps:
+      - uses: actions/checkout@v2
       - name: Copy deploy.sh to EC2 instance
         run: |
           mkdir -p ~/.ssh
