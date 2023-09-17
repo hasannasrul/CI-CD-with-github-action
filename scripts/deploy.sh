@@ -8,10 +8,11 @@ if [ -n "$existing_container" ]; then
 fi
 
 # removing old images from server
-docker images prune -a -f
+# docker images prune -a -f 
 
 # capturing run number from argument of worflow
 run_number="$1"
+echo "*** RUN NUMBER ******* \t" $run_number
 
 # deploying container
 docker run -p 3000:3000 -d --label flask-app $user/flask-simple-app:$run_number
