@@ -10,13 +10,13 @@ resource "aws_instance" "webserver" {
     tags = {
         Name: "flask-app"
     }
-    user_data = file("./env.sh")
+    user_data = file("./scripts/env.sh")
       
 }
 
 variable "ingress" {
   type        = list(number)
-  default     = [80,443,22]
+  default     = [80,443,22,3000]
   description = "security group ports"
 }
 
