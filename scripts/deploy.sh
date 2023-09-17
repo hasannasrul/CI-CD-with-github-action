@@ -12,7 +12,7 @@ fi
 
 # capturing run number from argument of worflow
 run_number="$1"
-echo "*** RUN NUMBER ******* \t" $run_number
+# echo "*** RUN NUMBER ******* \t" $run_number
 
 # deploying container
-docker run -p 3000:3000 -d --label flask-app $user/flask-simple-app:$run_number
+docker run -p 3000:3000 -d -l flask-app $user/flask-simple-app:$run_number
