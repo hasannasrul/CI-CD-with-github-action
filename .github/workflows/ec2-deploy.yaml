@@ -44,7 +44,7 @@ jobs:
       sshKey: ${{secrets.EC2_SSH_KEY}}
       user: ${{secrets.DOCKERHUB_USERNAME}}
       pass: ${{secrets.DOCKERHUB_PASSWORD}}
-      serverIp: ${{ env.EC2_SERVER_IP }}
+      serverIp: ${{ vars.EC2_SERVER_IP }}
     steps:
       - name: Copy deploy.sh to EC2 instance
         run: |
