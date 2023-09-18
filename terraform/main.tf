@@ -10,7 +10,7 @@ resource "aws_instance" "webserver" {
     tags = {
         Name: "flask-app"
     }
-    user_data = file("./scripts/env.sh")
+    user_data = file("../scripts/env.sh")
       
 }
 
@@ -50,4 +50,9 @@ resource "aws_security_group" "sg" {
             cidr_blocks = ["0.0.0.0/0"] 
         }
     }
+}
+
+output ec2-id {
+  value       = aws_instance.webserver.id
+  description = "ec2 instance id"
 }
